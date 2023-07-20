@@ -1,0 +1,37 @@
+Q1. Simplify Directory Path
+Given a string A representing an absolute path for a file (Unix-style).
+
+Return the string A after simplifying the absolute path.
+
+Note:
+
+In Unix-style file system:
+
+A period '.' refers to the current directory.
+A double period '..' refers to the directory up a level.
+Any multiple consecutive slashes '//' are treated as a single slash '/'.
+Input 1:
+    A = "/home/"
+Output 1:
+    "/home"
+
+Input 2:
+    A = "/a/./b/../../c/"
+Output 2:
+    "/c"
+
+Solution:
+str1 = input()
+str1=str1.split("/")
+print(str1)
+stack=[]
+for i in str1:
+    if(i=='.' or i==""):
+        continue
+    elif i=='..' and len(stack)>0:
+        stack.pop()
+    else:
+        stack.append(i)
+print(stack)
+res="/"+"/".join(stack)
+print(res)
