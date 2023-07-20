@@ -1,0 +1,37 @@
+Q3. Double Character Trouble
+
+Problem Description
+You have a string, denoted as A.
+
+To transform the string, you should perform the following operation repeatedly:
+Identify the first occurrence of consecutive identical pairs of characters within the string.
+Remove this pair of identical characters from the string.
+Repeat steps 1 and 2 until there are no more consecutive identical pairs of characters.
+The final result will be the transformed string.
+
+Input 1:
+ A = "abccbc"
+
+Output 1:"ac"
+
+Solution:
+class Solution:
+    # @param A : string
+    # @return a strings
+    def solve(self, A):
+        stack=[]
+        a=''
+        for i in A:
+            if not stack:
+                stack.append(i)
+                #print(stack)
+            else:
+                if stack[-1]==i:
+                    stack.pop()
+                else:
+                    stack.append(i)
+        if stack:
+            a=''.join([ i for i in stack])
+        return a
+        
+
