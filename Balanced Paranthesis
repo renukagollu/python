@@ -1,0 +1,40 @@
+Q2. Balanced Paranthesis
+Problem Description
+Given an expression string A, examine whether the pairs and the orders of “{“,”}”, ”(“,”)”, ”[“,”]” are correct in A.
+
+Refer to the examples for more clarity.
+ A = {([])}
+Output 1:1
+
+solution:
+class Solution:
+    # @param A : string
+    # @return an integer
+    def solve(self, A):
+        stk = []
+        for i in A:
+            # push any opening bracket into the stack
+            if i in '[{(':
+                stk.append(i)
+            else:
+                # check if the last unpaired opening bracket is of the same type 
+                # as the current closing bracket
+                if i == ']':
+                    if not stk or stk[-1] != '[':
+                        return 0
+                    else:
+                        stk.pop()
+                elif i == '}':
+                    if not stk or stk[-1] != '{':
+                        return 0
+                    else:
+                        stk.pop()
+                elif i == ')':
+                    if not stk or stk[-1] != '(':
+                        return 0
+                    else:
+                        stk.pop()
+        # checks if all the opening brackets are paired
+        if stk:
+            return 0
+        return 1
