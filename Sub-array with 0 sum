@@ -1,0 +1,35 @@
+Q1. Sub-array with 0 sum
+Problem Description
+Given an array of integers A, find and return whether the given array contains a non-empty subarray with a sum equal to 0.
+
+If the given array contains a sub-array with sum zero return 1, else return 0.
+
+Example Input
+Input 1:
+ A = [1, 2, 3, 4, 5]
+Input 2:
+ A = [4, -1, 1]
+
+Example Output
+Output 1:
+ 0
+Output 2:
+ 1
+
+Solution:
+class Solution:
+    # @param A : list of integers
+    # @return an integer
+    def solve(self, A):
+        #A = [1, 2, 3, 4, 5]
+        b=set()
+        ps=A[0]
+        b.add(A[0])
+        for i in range(1,len(A)):
+            ps=ps+A[i]
+            if(ps==0 or ps in b):
+                return 1
+            b.add(ps)
+        return 0
+            
+        
