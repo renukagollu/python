@@ -1,0 +1,72 @@
+Q1. Change Date Format
+Problem Description
+Given a date string in the format Day Month Year, where:
+
+Day is in the set {"1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", ..., "29th", "30th", "31th"}.
+Month is in the set {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}.
+Year is in the inclusive range [1900, 9000].
+
+Convert the date string to the format YYYY-MM-DD, where:
+
+YYYY denotes the 4 digit year.
+MM denotes the 2 digit month.
+DD denotes the 2 digit day.
+
+For example:
+
+1st Mar 1984 → 1984-03-01
+2nd Feb 2013 → 2013-02-02 4th Apr 1900 → 1900-04-04
+solution:
+class Solution:
+    # @param A : string
+    # @return a strings
+    def solve(self, A):
+        '''Input:A = 16th Mar 2068
+        Output: 2068-03-16'''
+        Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec=1,2,3,4,5,6,7,8,9,10,11,12
+        c=A.split()
+        a1=""
+        if "th" in A :
+            b=A.split("th")
+        if "st" in A :
+            b=A.split("st")
+        if "rd" in A :
+            b=A.split("rd")
+        if "nd" in A :
+            b=A.split("nd")
+        if(int(b[0])<10):
+            a1="0"+b[0]
+        else:
+            a1=b[0]
+        if(c[1]=="Jan"):
+            c[1]="01"
+        elif(c[1]=="Feb"):
+            c[1]="02"
+        elif(c[1]=="Mar"):
+            c[1]="03"
+        elif(c[1]=="Apr"):
+            c[1]="04"
+        elif(c[1]=="May"):
+            c[1]="05"
+        elif(c[1]=="Jun"):
+            c[1]="06"
+        elif(c[1]=="Jul"):
+            c[1]="07"
+        elif(c[1]=="Aug"):
+            c[1]="08"
+        elif(c[1]=="Sep"):
+            c[1]="09"
+        elif(c[1]=="Oct"):
+            c[1]="10"
+        elif(c[1]=="Nov"):
+            c[1]="11"
+        elif(c[1]=="Dec"):
+            c[1]="12"
+            
+        c1=c[2]+"-"+c[1]+"-"+a1
+        return c1
+        
+            
+        
+    
+        
